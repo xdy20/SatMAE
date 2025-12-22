@@ -1,0 +1,28 @@
+# SatMAE下游任务配置文件
+
+# 路径配置
+paths:
+  satmae_checkpoint: "/home/y/Code/GeoAI/ae/baseline/SatMAE/out/fmow_pretrain.pth"
+  sentinel2_dir: "/home/y/Code/GeoAI/ae/baseline/SatMAE/data/Sentinel2"
+  grid_dir: "/home/y/Code/GeoAI/ae/baseline/SatMAE/data/Grid"
+  output_dir: "/home/y/Code/GeoAI/ae/baseline/SatMAE/out/data_processed"
+  downstream_dir: "/home/y/Code/GeoAI/ae/baseline/SatMAE/downstream"
+
+# 模型配置
+model:
+  embed_dim: 1024
+  use_global_pool: false  # 使用CLS token
+  device: "cuda"
+
+# 数据配置
+data:
+  tile_size: 224
+  batch_size: 32
+  cities: ["shenzhen", "beijing"]
+
+# 训练配置
+training:
+  test_size: 0.2
+  random_state: 42
+  use_log_transform: true  # GDP/人口使用对数变换
+  regularization: "strong"  # strong / medium / weak
